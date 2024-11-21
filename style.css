@@ -1,0 +1,133 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: url('https://th.bing.com/th/id/OIP.0ZGScJheq_OAy5RhVEEy1wHaDE?w=332&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7') no-repeat  center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure body takes up the full height of the viewport */
+}
+
+/* Header and Footer */
+header {
+    text-align: center;
+    background: #5cb85c;
+    color: white;
+    padding: 10px 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    text-align: center;
+    background: #5cb85c;
+    color: white;
+    padding: 10px 0;
+    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2);
+    margin-top: auto; /* Push footer to the bottom */
+}
+
+/* Main content styles */
+main {
+    flex: 1; /* Allow main content to expand and push footer to the bottom */
+}
+
+.container {
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+input[type="text"] {
+    width: 75%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    background: #5cb85c;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px #4cae4c;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #4cae4c;
+}
+
+button:active {
+    box-shadow: none;
+    transform: translateY(2px);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+    box-shadow: 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #888;
+}
+
+/* Message Box Styles */
+#message-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: none;
+    z-index: 1000;
+}
+
+#message-box p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+#message-box button {
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#message-box button:hover {
+    background: #c9302c;
+}
+
+.hidden {
+    display: none;
+}
