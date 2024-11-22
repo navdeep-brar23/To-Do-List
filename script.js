@@ -1,12 +1,13 @@
-// Get references to DOM elements
+// Select DOM elements
 const taskInput = document.getElementById('task-input');
-const taskList = document.getElementById('task-list');
+const incompleteTaskList = document.getElementById('incomplete-task-list');
+const completeTaskList = document.getElementById('complete-task-list');
 const addTaskBtn = document.getElementById('add-task-btn');
 const messageBox = document.getElementById('message-box');
 const messageText = document.getElementById('message-text');
 const closeMessageBtn = document.getElementById('close-message-btn');
 
-// Function to show message box
+// Function to display a message in the message box
 function showMessage(message) {
     messageText.textContent = message;
     messageBox.style.display = 'block';
@@ -17,35 +18,46 @@ closeMessageBtn.addEventListener('click', () => {
     messageBox.style.display = 'none';
 });
 
-// Add new task
-addTaskBtn.addEventListener('click', function () {
+// Add a new task to the incomplete list
+addTaskBtn.addEventListener('click', () => {
     const taskText = taskInput.value.trim();
     if (taskText) {
-        addTask(taskText);
+        addTaskToIncomplete(taskText);
         taskInput.value = '';
+    } else {
+        showMessage('Task cannot be empty!');
     }
 });
 
-// Add task to the list
-function addTask(task) {
+// Function to add a task to the incomplete list
+function addTaskToIncomplete(taskText) {
+    const taskElement = createTaskElement(taskText, false);
+    incompleteTaskList.appendChild(taskElement);
+}
+
+// Function to create a task element
+function createTaskElement(taskText, isCompleted) {
     const li = document.createElement('li');
     const taskSpan = document.createElement('span');
-    taskSpan.textContent = task;
+    taskSpan.textContent = taskText;
 
-    // Checkbox for marking completion
+    // Checkbox to mark task as completed
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
+    checkbox.checked = isCompleted;
     checkbox.addEventListener('change', () => {
-        li.classList.toggle('completed');
+        if (checkbox.checked) {
+            moveToComplete(taskText, li);
+        }
     });
 
-    // Edit button
+    // Edit button (only for incomplete tasks)
     const editBtn = document.createElement('button');
     editBtn.textContent = 'Edit';
     editBtn.addEventListener('click', () => {
-        const newTask = prompt('Edit task:', taskSpan.textContent);
-        if (newTask) {
-            taskSpan.textContent = newTask;
+        const updatedTask = prompt('Edit your task:', taskSpan.textContent);
+        if (updatedTask) {
+            taskSpan.textContent = updatedTask;
             showMessage('Task updated successfully!');
         }
     });
@@ -60,12 +72,17 @@ function addTask(task) {
         }
     });
 
-    // Append elements to the task
     li.appendChild(checkbox);
     li.appendChild(taskSpan);
-    li.appendChild(editBtn);
+    if (!isCompleted) li.appendChild(editBtn);
     li.appendChild(deleteBtn);
 
-    // Add task to the list
-    taskList.appendChild(li);
+    return li;
+}
+
+// Move task to the completed list
+function moveToComplete(taskText, taskElement) {
+    taskElement.remove();
+    const completedTask = createTaskElement(taskText, true);
+    completeTaskList.appendChild(completedTask);
 }
