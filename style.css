@@ -2,7 +2,8 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background: #f0f0f0;
+    background: url('https://th.bing.com/th/id/OIP.0ZGScJheq_OAy5RhVEEy1wHaDE?w=332&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7') no-repeat center center fixed;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -11,7 +12,7 @@ body {
 /* Header and Footer */
 header {
     text-align: center;
-    background: #5cb85c;
+    background: rgba(92, 184, 92, 0.9); /* Slightly transparent green */
     color: white;
     padding: 15px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -19,7 +20,7 @@ header {
 
 footer {
     text-align: center;
-    background: #5cb85c;
+    background: rgba(92, 184, 92, 0.9); /* Slightly transparent green */
     color: white;
     padding: 10px 0;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
@@ -37,7 +38,7 @@ main {
 
 .container {
     width: 400px;
-    background: white;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white for better readability */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -84,11 +85,6 @@ li {
     border-radius: 5px;
     margin-bottom: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.completed {
-    text-decoration: line-through;
-    color: gray;
 }
 
 /* Message Box */
